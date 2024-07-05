@@ -1,5 +1,5 @@
 import "../styles/AboutPage.scss";
-import myphoto from "../assets/photo.jpg";
+import myphoto from "../assets/photo.webp";
 
 function AboutPage() {
   return (
