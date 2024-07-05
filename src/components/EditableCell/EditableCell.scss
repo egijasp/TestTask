@@ -1,0 +1,42 @@
+.cell-lastName,
+.cell-firstName,
+.cell-position {
+  min-width: 120px;
+}
+
+.table_input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.table_input:focus {
+  outline: none;
+  background-color: #f4fafa;
+  border: 1px solid #227a69;
+}
+
+.panel {
+  margin-top: 4px;
+  display: flex;
+  gap: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn_cell {
+  padding: 0.5em;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #227a69;
+  font-family: inherit;
+  background-color: transparent;
+}
+
+.btn-cancel {
+  background-color: #fff;
+}
