@@ -6,7 +6,6 @@ type PaginatonProps = {
   totalItems: number;
   itemsPerPage: number;
   onPageChange: (page: number) => void;
-  onItemsPerPageChange: (itemsPerPage: number) => void;
 };
 
 const Paginaton: FC<PaginatonProps> = ({
@@ -14,7 +13,6 @@ const Paginaton: FC<PaginatonProps> = ({
   totalItems,
   itemsPerPage,
   onPageChange,
-  onItemsPerPageChange,
 }) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
@@ -55,15 +53,6 @@ const Paginaton: FC<PaginatonProps> = ({
           keyboard_double_arrow_right
         </i>
       </button>
-      {/* <select
-        value={itemsPerPage}
-        onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
-        className="pagination__select"
-      >
-        <option value={5}>5</option>
-        <option value={10}>10</option>
-        <option value={15}>15</option>
-      </select> */}
     </div>
   );
 };

@@ -1,10 +1,10 @@
-import myphoto from "../assets/photo1.jpg";
+import myphoto from "../assets/photo.jpg";
 
 function AboutPage() {
   return (
-    <div id="aboutPage" className="container">
-      <h2>Informācija par mani</h2>
-      <p>Šeit būs informācija par mani...</p>
+    <div id="aboutPage" className="container flex">
+      <h2>About me</h2>
+      <p>Here will be information about me...</p>
       <img className="photo" src={myphoto} alt="me" />
     </div>
   );

@@ -7,14 +7,16 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <div className="container_app">
       <Header />
-      <Routes>
-        <Route path="/table" element={<Table />} />
-        <Route path="/about" element={<AboutPage />} />
-      </Routes>
+      <div className="content">
+        <Routes>
+          <Route path="/table" element={<Table />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
+      </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

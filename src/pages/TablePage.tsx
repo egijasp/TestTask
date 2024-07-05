@@ -22,7 +22,7 @@ const Table = () => {
 
   const [page, setPage] = useState(1);
 
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const itemsPerPage = 5;
 
   const dispatch = useDispatch();
 
@@ -55,18 +55,12 @@ const Table = () => {
   };
 
   const saveEdit = (id: number, field: string) => {
-    console.log(editValues);
     const entry = entries.find((entry) => entry.id === id);
     if (entry) {
       const updatedEntry = { ...entry, [field]: editValues[field] };
-      console.log(updatedEntry);
       dispatch(editEntry(updatedEntry));
       setEditing(null);
     }
-    // if (editing !== null) {
-    //   dispatch(editEntry({ id, ...editValues }));
-    //   setEditing(null);
-    // }
   };
 
   const handleEditChange = (field: string, value: string) => {
@@ -76,7 +70,7 @@ const Table = () => {
     }));
   };
 
-  const deleteHandler = (id: number) => {
+  const handleDelete = (id: number) => {
     dispatch(deleteEntry(id));
   };
 
@@ -166,7 +160,7 @@ const Table = () => {
                       className="btn btn-icon"
                       icon="delete"
                       iconClassName="material-symbols-outlined"
-                      clickHandler={() => deleteHandler(id)}
+                      clickHandler={() => handleDelete(id)}
                     ></Button>
                   </td>
                 </tr>
@@ -179,7 +173,6 @@ const Table = () => {
           totalItems={filteredEntries.length}
           itemsPerPage={itemsPerPage}
           onPageChange={setPage}
-          onItemsPerPageChange={setItemsPerPage}
         />
       </div>
     </main>
