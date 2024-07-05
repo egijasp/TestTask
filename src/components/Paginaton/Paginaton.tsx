@@ -55,6 +55,15 @@ const Paginaton: FC<PaginatonProps> = ({
           keyboard_double_arrow_right
         </i>
       </button>
+      {/* <select
+        value={itemsPerPage}
+        onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
+        className="pagination__select"
+      >
+        <option value={5}>5</option>
+        <option value={10}>10</option>
+        <option value={15}>15</option>
+      </select> */}
     </div>
   );
 };
