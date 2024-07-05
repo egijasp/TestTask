@@ -11,7 +11,7 @@ function App() {
       <Header />
       <div className="content">
         <Routes>
-          <Route path="/table" element={<Table />} />
+          <Route path="/" element={<Table />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </div>
