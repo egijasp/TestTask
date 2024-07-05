@@ -54,3 +54,9 @@ th:last-child,
 .table-cell_actions {
   width: 60px;
 }
+
+@media (min-width: 700px) {
+  table {
+    display: table;
+  }
+}

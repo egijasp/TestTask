@@ -1,9 +1,19 @@
-.about_tilte {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap");
+
+.about {
+  font-family: "Baskervville SC", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .about_info {
+  padding-top: 3rem;
   text-align: center;
+  font-size: 3rem;
+}
+
+.about_hello {
+  padding-bottom: 2rem;
 }
 
 .photo {
@@ -15,13 +25,15 @@
 }
 
 @media (min-width: 700px) {
-  .about_tilte {
-    text-align: left;
-  }
-
   .about_info {
     display: flex;
     gap: 4rem;
+    font-size: 5rem;
+    padding-top: 3.5rem;
+  }
+
+  .about_hello {
+    align-self: center;
   }
 
   .photo {
