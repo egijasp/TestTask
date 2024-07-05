@@ -4,12 +4,13 @@ import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 
-function Header() {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <header className="header">
       <div className="container row">
@@ -25,17 +26,21 @@ function Header() {
         </div>
         <nav className={`nav ${isOpen ? "nav--visible" : ""}`}>
           <ul className="nav_list">
-            <li className="nav_links">
-              <Link to="/table">Table</Link>
+            <li className="nav_item">
+              <Link className="nav_link" to="/table">
+                Table
+              </Link>
             </li>
-            <li className="nav_links">
-              <Link to="/about">About</Link>
+            <li className="nav_item">
+              <Link className="nav_link" to="/about">
+                About
+              </Link>
             </li>
           </ul>
         </nav>
       </div>
     </header>
   );
-}
+};
 
 export default Header;

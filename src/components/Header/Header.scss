@@ -1,18 +1,16 @@
 .header {
   background-color: #000;
   padding: 1em 0;
-  text-align: center;
+  text-align: right;
+}
+
+.nav {
+  width: 100%;
 }
 
 .hamburger {
   width: 50%;
   position: relative;
-  /* width: 30px;
-    height: 3px;
-    background-color: transparent;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.3s ease; */
 }
 
 .hamburger,
@@ -22,19 +20,12 @@
   margin: 0 auto;
   height: 3px;
   background: white;
-  /* content: "";
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    background-color: white;
-    transition: all 0.3s ease; */
 }
 
 .hamburger::before,
 .hamburger::after {
   content: "";
   width: 100%;
-  /* color: #227A69 */
 }
 
 .hamburger::before {
@@ -51,10 +42,6 @@
   position: absolute;
 }
 
-.nav {
-  width: 100%;
-}
-
 .nav--visible {
   visibility: visible;
   height: auto;
@@ -63,6 +50,17 @@
 
 .nav_list {
   list-style: none;
+}
+
+.nav_link {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    opacity: 0.75;
+  }
 }
 
 .nav-toggle {
@@ -82,4 +80,34 @@
 .nav-toggle:focus,
 .nav-toggle:hover {
   opacity: 0.75;
+}
+
+@media (min-width: 700px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav {
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: auto;
+    position: relative;
+    font-weight: bold;
+  }
+
+  .nav_list {
+    display: flex;
+    margin: 0;
+  }
+
+  .nav_item {
+    margin: 0 0 0 1.5em;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
 }
