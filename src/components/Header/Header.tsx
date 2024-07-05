@@ -27,12 +27,12 @@ const Header = () => {
         <nav className={`nav ${isOpen ? "nav--visible" : ""}`}>
           <ul className="nav_list">
             <li className="nav_item">
-              <Link className="nav_link" to="/table">
+              <Link className="nav_link" to="/table" onClick={toggleMenu}>
                 Table
               </Link>
             </li>
             <li className="nav_item">
-              <Link className="nav_link" to="/about">
+              <Link className="nav_link" to="/about" onClick={toggleMenu}>
                 About
               </Link>
             </li>
