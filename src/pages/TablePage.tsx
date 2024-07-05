@@ -1,3 +1,4 @@
+import "../styles/TablePage.scss";
 import { useState } from "react";
 import Input from "../components/Input/input";
 import Button from "../components/Button/Button";
