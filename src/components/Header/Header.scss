@@ -4,10 +4,6 @@
   text-align: right;
 }
 
-.nav {
-  width: 100%;
-}
-
 .hamburger {
   width: 50%;
   position: relative;
@@ -37,6 +33,7 @@
 }
 
 .nav {
+  width: 100%;
   visibility: hidden;
   height: 0;
   position: absolute;
