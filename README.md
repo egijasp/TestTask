@@ -1,6 +1,34 @@
+# Test Task
+
+This project is a simple React application that uses Redux for state management and Typescript for type checking. It includes a table component where you can add, edit, and delete entries. The application also includes a responsive design.
+
 ### Visit
 
 You can try it out: https://test-task-flax-alpha.vercel.app/
+
+## Setup instructions
+
+### Clone the repository
+
+Using SSH:
+
+`git clone git@github.com:egijasp/TestTask.git`
+
+Using HTTPS:
+
+`git clone https://github.com/egijasp/TestTask.git`
+
+Navigate to the project directory:
+
+`cd TestTask`
+
+### Install dependencies:
+
+Run `npm install` to install dependencies.
+
+### Run the application:
+
+Run `npm run dev` for a dev server. Navigate to `http://localhost:5173/`.
 
 # React + TypeScript + Vite
 
