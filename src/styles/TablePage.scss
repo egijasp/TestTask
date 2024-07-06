@@ -5,10 +5,10 @@
 .input-search {
   width: 100%;
   border: none;
-  background-color: hsl(189, 41%, 97%);
+  background-color: #f4fafa;
   border-radius: 4px;
   padding: 10px 15px;
-  color: hsl(183, 100%, 15%);
+  color: #227a69;
   font-weight: 700;
 
   &:focus {
@@ -19,6 +19,7 @@
 .container_table {
   width: 100%;
   overflow-x: auto;
+  border: 1px solid #dddddd;
 }
 
 table {
