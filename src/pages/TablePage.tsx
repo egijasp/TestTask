@@ -54,6 +54,10 @@ const Table = () => {
     const id = uuidv4();
     const newEntry = { id, firstName: "", lastName: "", position: "" };
     dispatch(addEntry(newEntry));
+
+    // Calculate the page number where the new entry will be located and set this page
+    const newPage = Math.ceil((entries.length + 1) / itemsPerPage);
+    setPage(newPage);
   };
 
   const saveEdit = (id: string, field: string) => {
@@ -74,6 +78,10 @@ const Table = () => {
 
   const handleDelete = (id: string) => {
     dispatch(deleteEntry(id));
+
+    // Calculate the page number after deletion
+    const newPage = Math.ceil((entries.length - 1) / itemsPerPage);
+    setPage(newPage);
   };
 
   const handleItemsPerPageChange = (newItemsPerPage: number) => {
