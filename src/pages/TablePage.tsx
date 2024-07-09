@@ -5,7 +5,7 @@ import Button from "../components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { addEntry, deleteEntry, editEntry } from "../redux/reducers/TableSlice";
 import { RootState } from "../redux/store";
-import Paginaton from "../components/Paginaton/Paginaton";
+import Pagination from "../components/Pagination/Pagination";
 import EditableCell from "../components/EditableCell/EditableCell";
 
 const Table = () => {
@@ -178,7 +178,7 @@ const Table = () => {
             </tbody>
           </table>
         </div>
-        <Paginaton
+        <Pagination
           currentPage={page}
           totalItems={filteredEntries.length}
           itemsPerPage={itemsPerPage}

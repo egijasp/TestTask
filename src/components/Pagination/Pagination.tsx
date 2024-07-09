@@ -1,7 +1,7 @@
-import "./Paginaton.scss";
+import "./Pagination.scss";
 import { FC } from "react";
 
-type PaginatonProps = {
+type PaginationProps = {
   currentPage: number;
   totalItems: number;
   itemsPerPage: number;
@@ -9,7 +9,7 @@ type PaginatonProps = {
   onItemsPerPageChange: (itemsPerPage: number) => void;
 };
 
-const Paginaton: FC<PaginatonProps> = ({
+const Pagination: FC<PaginationProps> = ({
   currentPage,
   totalItems,
   itemsPerPage,
@@ -76,4 +76,4 @@ const Paginaton: FC<PaginatonProps> = ({
   );
 };
 
-export default Paginaton;
+export default Pagination;
