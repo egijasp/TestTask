@@ -7,9 +7,10 @@
 }
 
 .about_info {
-  padding-top: 3rem;
+  padding-top: 2rem;
   text-align: center;
   font-size: 3rem;
+  margin-bottom: 2rem;
 }
 
 .about_hello {
@@ -29,15 +30,16 @@
     display: flex;
     gap: 4rem;
     font-size: 5rem;
-    padding-top: 3.5rem;
+    width: 100%;
   }
 
   .about_hello {
     align-self: center;
+    flex: 1;
   }
 
   .photo {
     max-width: 400px;
-    height: 400px;
+    height: 80vh;
   }
 }
