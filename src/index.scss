@@ -54,6 +54,10 @@ body {
 .btn-primary {
   background-color: #227a69;
   color: #fff;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .btn-icon {
