@@ -24,7 +24,6 @@
 
 table {
   width: 100%;
-  table-layout: fixed;
   border-collapse: collapse;
   font-size: 0.8rem;
   display: block;
@@ -33,7 +32,6 @@ table {
 td,
 th {
   border: 1px solid #dddddd;
-  text-align: left;
   padding: 8px;
 }
 
@@ -41,19 +39,14 @@ tr:hover {
   background-color: #f4fafa;
 }
 
-.table_header {
-  position: sticky;
-}
-
 .table-cell_id,
 th:first-child {
   width: 50px;
-  position: sticky;
 }
 
 th:last-child,
 .table-cell_actions {
-  width: 60px;
+  width: 65px;
 }
 
 @media (min-width: 700px) {

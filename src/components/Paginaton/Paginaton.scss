@@ -1,9 +1,15 @@
 .pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   padding: 10px 0;
   width: 100%;
+}
+
+.pagination_select {
+  font-size: 0.8rem;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 0.6em;
 }
 
 .pagination_button {
@@ -24,4 +30,16 @@
   background-color: #227a69;
   color: #fff;
   font-weight: bold;
+}
+
+@media (min-width: 700px) {
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .pagination_select {
+    margin-bottom: 0;
+  }
 }

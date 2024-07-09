@@ -6,6 +6,7 @@ type PaginatonProps = {
   totalItems: number;
   itemsPerPage: number;
   onPageChange: (page: number) => void;
+  onItemsPerPageChange: (itemsPerPage: number) => void;
 };
 
 const Paginaton: FC<PaginatonProps> = ({
@@ -13,8 +14,11 @@ const Paginaton: FC<PaginatonProps> = ({
   totalItems,
   itemsPerPage,
   onPageChange,
+  onItemsPerPageChange,
 }) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  const options = [5, 10, 50];
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -24,35 +28,50 @@ const Paginaton: FC<PaginatonProps> = ({
 
   return (
     <div className="pagination">
-      <button
-        onClick={() => handlePageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-        className="pagination_button"
-      >
-        <i className="material-symbols-outlined small">
-          keyboard_double_arrow_left
-        </i>
-      </button>
-      {[...Array(totalPages)].map((_, index) => (
-        <button
-          key={index + 1}
-          onClick={() => handlePageChange(index + 1)}
-          className={`pagination_button ${
-            currentPage === index + 1 ? "active" : ""
-          }`}
+      <div className="pagination_select">
+        <span>Items per page</span>
+        <select
+          value={itemsPerPage}
+          onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
         >
-          {index + 1}
+          {options.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="pagination_button"
+        >
+          <i className="material-symbols-outlined small">
+            keyboard_double_arrow_left
+          </i>
         </button>
-      ))}
-      <button
-        onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-        className="pagination_button"
-      >
-        <i className="material-symbols-outlined small">
-          keyboard_double_arrow_right
-        </i>
-      </button>
+        {[...Array(totalPages)].map((_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => handlePageChange(index + 1)}
+            className={`pagination_button ${
+              currentPage === index + 1 ? "active" : ""
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className="pagination_button"
+        >
+          <i className="material-symbols-outlined small">
+            keyboard_double_arrow_right
+          </i>
+        </button>
+      </div>
     </div>
   );
 };

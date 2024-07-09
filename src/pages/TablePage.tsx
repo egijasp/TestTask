@@ -17,13 +17,13 @@ const Table = () => {
     null
   );
 
+  const [itemsPerPage, setItemsPerPage] = useState(5);
+
   const [search, setSearch] = useState<string>("");
 
   const [editValues, setEditValues] = useState<{ [key: string]: string }>({});
 
   const [page, setPage] = useState(1);
-
-  const itemsPerPage = 5;
 
   const dispatch = useDispatch();
 
@@ -75,6 +75,11 @@ const Table = () => {
     dispatch(deleteEntry(id));
   };
 
+  const handleItemsPerPageChange = (newItemsPerPage: number) => {
+    setItemsPerPage(newItemsPerPage);
+    setPage(1);
+  };
+
   return (
     <main className="main">
       <div id="tablePage" className="container">
@@ -111,61 +116,65 @@ const Table = () => {
               </tr>
             </thead>
             <tbody>
-              {paginatedEntries.map(({ id, lastName, position, firstName }) => (
-                <tr key={id}>
-                  <td className="table-cell_id">{id}</td>
-                  <EditableCell
-                    field="firstName"
-                    id={id}
-                    placeholder="Name"
-                    editValue={editValues.firstName ?? ""}
-                    value={firstName}
-                    handleEditChange={handleEditChange}
-                    startEditing={startEditing}
-                    isEditing={
-                      editing?.id === id && editing.field === "firstName"
-                    }
-                    saveEdit={() => saveEdit(id, "firstName")}
-                    cancelEdit={() => cancelEdit()}
-                  />
-                  <EditableCell
-                    field="lastName"
-                    id={id}
-                    editValue={editValues.lastName ?? ""}
-                    placeholder="Surname"
-                    value={lastName}
-                    handleEditChange={handleEditChange}
-                    startEditing={startEditing}
-                    isEditing={
-                      editing?.id === id && editing.field === "lastName"
-                    }
-                    saveEdit={() => saveEdit(id, "lastName")}
-                    cancelEdit={() => cancelEdit()}
-                  />
-                  <EditableCell
-                    field="position"
-                    value={position}
-                    placeholder="Position"
-                    id={id}
-                    editValue={editValues.position ?? ""}
-                    handleEditChange={handleEditChange}
-                    startEditing={startEditing}
-                    isEditing={
-                      editing?.id === id && editing.field === "position"
-                    }
-                    saveEdit={() => saveEdit(id, "position")}
-                    cancelEdit={() => cancelEdit()}
-                  />
-                  <td className="table-cell_actions">
-                    <Button
-                      className="btn btn-icon"
-                      icon="delete"
-                      iconClassName="material-symbols-outlined"
-                      clickHandler={() => handleDelete(id)}
-                    ></Button>
-                  </td>
-                </tr>
-              ))}
+              {paginatedEntries.map(
+                ({ id, lastName, position, firstName }, index) => (
+                  <tr key={id}>
+                    <td className="table-cell_id">
+                      {(page - 1) * itemsPerPage + index + 1}
+                    </td>
+                    <EditableCell
+                      field="firstName"
+                      id={id}
+                      placeholder="Name"
+                      editValue={editValues.firstName ?? ""}
+                      value={firstName}
+                      handleEditChange={handleEditChange}
+                      startEditing={startEditing}
+                      isEditing={
+                        editing?.id === id && editing.field === "firstName"
+                      }
+                      saveEdit={() => saveEdit(id, "firstName")}
+                      cancelEdit={() => cancelEdit()}
+                    />
+                    <EditableCell
+                      field="lastName"
+                      id={id}
+                      editValue={editValues.lastName ?? ""}
+                      placeholder="Surname"
+                      value={lastName}
+                      handleEditChange={handleEditChange}
+                      startEditing={startEditing}
+                      isEditing={
+                        editing?.id === id && editing.field === "lastName"
+                      }
+                      saveEdit={() => saveEdit(id, "lastName")}
+                      cancelEdit={() => cancelEdit()}
+                    />
+                    <EditableCell
+                      field="position"
+                      value={position}
+                      placeholder="Position"
+                      id={id}
+                      editValue={editValues.position ?? ""}
+                      handleEditChange={handleEditChange}
+                      startEditing={startEditing}
+                      isEditing={
+                        editing?.id === id && editing.field === "position"
+                      }
+                      saveEdit={() => saveEdit(id, "position")}
+                      cancelEdit={() => cancelEdit()}
+                    />
+                    <td className="table-cell_actions">
+                      <Button
+                        className="btn btn-icon"
+                        icon="delete"
+                        iconClassName="material-symbols-outlined"
+                        clickHandler={() => handleDelete(id)}
+                      ></Button>
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
           </table>
         </div>
@@ -174,6 +183,7 @@ const Table = () => {
           totalItems={filteredEntries.length}
           itemsPerPage={itemsPerPage}
           onPageChange={setPage}
+          onItemsPerPageChange={handleItemsPerPageChange}
         />
       </div>
     </main>
