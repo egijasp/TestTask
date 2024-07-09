@@ -7,13 +7,14 @@ import { addEntry, deleteEntry, editEntry } from "../redux/reducers/TableSlice";
 import { RootState } from "../redux/store";
 import Pagination from "../components/Pagination/Pagination";
 import EditableCell from "../components/EditableCell/EditableCell";
+import { v4 as uuidv4 } from "uuid";
 
 const Table = () => {
   const entries = useSelector((state: RootState) => state.table);
 
   const headers = ["ID", "First Name", "Last Name", "Position", "Actions"];
 
-  const [editing, setEditing] = useState<{ id: number; field: string } | null>(
+  const [editing, setEditing] = useState<{ id: string; field: string } | null>(
     null
   );
 
@@ -39,7 +40,7 @@ const Table = () => {
     page * itemsPerPage
   );
 
-  const startEditing = (id: number, field: string, value: string) => {
+  const startEditing = (id: string, field: string, value: string) => {
     setEditing({ id, field });
     setEditValues({ ...editValues, [field]: value });
   };
@@ -50,12 +51,12 @@ const Table = () => {
   };
 
   const handleAdd = () => {
-    const id = entries.length + 1;
+    const id = uuidv4();
     const newEntry = { id, firstName: "", lastName: "", position: "" };
     dispatch(addEntry(newEntry));
   };
 
-  const saveEdit = (id: number, field: string) => {
+  const saveEdit = (id: string, field: string) => {
     const entry = entries.find((entry) => entry.id === id);
     if (entry) {
       const updatedEntry = { ...entry, [field]: editValues[field] };
@@ -71,7 +72,7 @@ const Table = () => {
     }));
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     dispatch(deleteEntry(id));
   };
 

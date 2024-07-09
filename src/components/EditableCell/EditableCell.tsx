@@ -2,15 +2,15 @@ import "./EditableCell.scss";
 import { FC } from "react";
 
 interface EditableCellProps {
-  id: number;
+  id: string;
   field: string;
   value: string;
   isEditing: boolean;
   editValue: string;
   placeholder: string;
-  startEditing: (id: number, field: string, value: string) => void;
+  startEditing: (id: string, field: string, value: string) => void;
   handleEditChange: (field: string, value: string) => void;
-  saveEdit: (id: number, field: string) => void;
+  saveEdit: (id: string, field: string) => void;
   cancelEdit: () => void;
 }
 
