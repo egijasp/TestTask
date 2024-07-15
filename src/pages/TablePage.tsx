@@ -6,24 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { addEntry, deleteEntry, editEntry } from "../redux/reducers/TableSlice";
 import { RootState } from "../redux/store";
 import Pagination from "../components/Pagination/Pagination";
-import EditableCell from "../components/EditableCell/EditableCell";
 import { v4 as uuidv4 } from "uuid";
+import Table from "../components/Table/Table";
 
-const Table = () => {
+const headers = ["ID", "First Name", "Last Name", "Position", "Actions"];
+
+const TablePage = () => {
   const entries = useSelector((state: RootState) => state.table);
-
-  const headers = ["ID", "First Name", "Last Name", "Position", "Actions"];
-
   const [editing, setEditing] = useState<{ id: string; field: string } | null>(
     null
   );
-
   const [itemsPerPage, setItemsPerPage] = useState(5);
-
   const [search, setSearch] = useState<string>("");
-
   const [editValues, setEditValues] = useState<{ [key: string]: string }>({});
-
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
@@ -56,8 +51,7 @@ const Table = () => {
     dispatch(addEntry(newEntry));
 
     // Calculate the page number where the new entry will be located and set this page
-    const newPage = Math.ceil((entries.length + 1) / itemsPerPage);
-    setPage(newPage);
+    setPage(Math.ceil((entries.length + 1) / itemsPerPage));
   };
 
   const saveEdit = (id: string, field: string) => {
@@ -92,19 +86,11 @@ const Table = () => {
   return (
     <main className="main">
       <div id="tablePage" className="container">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
-            alignItems: "flex-end",
-            marginBottom: "20px",
-          }}
-        >
+        <div className="table-page__filter">
           <Input
             type="search"
             placeholder="Search"
-            className="input-search"
+            className="table-page__search"
             onChange={(e) => setSearch(e.target.value)}
           />
           <Button
@@ -115,77 +101,20 @@ const Table = () => {
             clickHandler={() => handleAdd()}
           ></Button>
         </div>
-        <div className="container_table">
-          <table>
-            <thead>
-              <tr className="table_header">
-                {headers.map((header) => (
-                  <th key={header}>{header}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedEntries.map(
-                ({ id, lastName, position, firstName }, index) => (
-                  <tr key={id}>
-                    <td className="table-cell_id">
-                      {(page - 1) * itemsPerPage + index + 1}
-                    </td>
-                    <EditableCell
-                      field="firstName"
-                      id={id}
-                      placeholder="Name"
-                      editValue={editValues.firstName ?? ""}
-                      value={firstName}
-                      handleEditChange={handleEditChange}
-                      startEditing={startEditing}
-                      isEditing={
-                        editing?.id === id && editing.field === "firstName"
-                      }
-                      saveEdit={() => saveEdit(id, "firstName")}
-                      cancelEdit={() => cancelEdit()}
-                    />
-                    <EditableCell
-                      field="lastName"
-                      id={id}
-                      editValue={editValues.lastName ?? ""}
-                      placeholder="Surname"
-                      value={lastName}
-                      handleEditChange={handleEditChange}
-                      startEditing={startEditing}
-                      isEditing={
-                        editing?.id === id && editing.field === "lastName"
-                      }
-                      saveEdit={() => saveEdit(id, "lastName")}
-                      cancelEdit={() => cancelEdit()}
-                    />
-                    <EditableCell
-                      field="position"
-                      value={position}
-                      placeholder="Position"
-                      id={id}
-                      editValue={editValues.position ?? ""}
-                      handleEditChange={handleEditChange}
-                      startEditing={startEditing}
-                      isEditing={
-                        editing?.id === id && editing.field === "position"
-                      }
-                      saveEdit={() => saveEdit(id, "position")}
-                      cancelEdit={() => cancelEdit()}
-                    />
-                    <td className="table-cell_actions">
-                      <Button
-                        className="btn btn-icon"
-                        icon="delete"
-                        iconClassName="material-symbols-outlined"
-                        clickHandler={() => handleDelete(id)}
-                      ></Button>
-                    </td>
-                  </tr>
-                )
-              )}
-            </tbody>
-          </table>
+        <div className="table-page__table">
+          <Table
+            headers={headers}
+            entries={paginatedEntries}
+            page={page}
+            itemsPerPage={itemsPerPage}
+            startEditing={startEditing}
+            editing={editing}
+            editValues={editValues}
+            handleEditChange={handleEditChange}
+            saveEdit={saveEdit}
+            cancelEdit={cancelEdit}
+            handleDelete={handleDelete}
+          />
         </div>
         <Pagination
           currentPage={page}
@@ -199,4 +128,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default TablePage;

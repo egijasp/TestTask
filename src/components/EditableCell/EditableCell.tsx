@@ -26,29 +26,29 @@ const EditableCell: FC<EditableCellProps> = ({
   saveEdit,
   cancelEdit,
 }) => (
-  <td className={`cell-${field}`}>
+  <td className={`editable-cell editable-cell__${field}`}>
     <input
       name={field}
       value={isEditing ? editValue : value}
       type="text"
       onChange={(e) => handleEditChange(field, e.target.value)}
       placeholder={`Type ${placeholder}`}
-      className="table_input"
+      className="cell__input"
       onFocus={() => startEditing(id, field, value)}
       autoComplete="off"
     />
-    <div className={`panel ${isEditing ? "" : "hidden"}`}>
+    <div className={`editable-cell__panel ${isEditing ? "" : "hidden"}`}>
       <button
         type="button"
         onClick={() => saveEdit(id, field)}
-        className="btn_cell btn-primary"
+        className="editable-cell_btn btn-primary"
       >
         Save
       </button>
       <button
         type="button"
         onClick={cancelEdit}
-        className="btn_cell btn-cancel"
+        className="editable-cell_btn editable-cell__btn--cancel"
       >
         Cancel
       </button>

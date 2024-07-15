@@ -1,23 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap");
 
-.about {
-  font-family: "Baskervville SC", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.about_info {
-  padding-top: 2rem;
+.about__info {
   text-align: center;
   font-size: 3rem;
   margin-bottom: 2rem;
 }
 
-.about_hello {
+.about__hello {
   padding-bottom: 2rem;
+  font-family: "Baskervville SC", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.photo {
+.about__photo-container {
+  flex: 1;
+}
+
+.about__photo {
   max-width: 300px;
   width: 100%;
   height: 300px;
@@ -25,21 +25,91 @@
   object-fit: cover;
 }
 
+.about__description {
+  line-height: 1.6;
+}
+
+.about__description-title {
+  font-size: 1.2rem;
+}
+
+.about__description-accent {
+  color: #227a69;
+}
+
+.experience {
+  padding: 2rem 0;
+  text-align: center;
+
+  &__title {
+    margin-bottom: 2rem;
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+}
+
+.card {
+  background: #f0f0f0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  max-width: 300px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &__title {
+    margin-bottom: 0.5rem;
+  }
+
+  &__company {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    color: #666;
+  }
+}
+
 @media (min-width: 700px) {
-  .about_info {
+  .about__info {
     display: flex;
     gap: 4rem;
     font-size: 5rem;
     width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0;
   }
 
-  .about_hello {
+  .about__hello {
     align-self: center;
     flex: 1;
   }
 
-  .photo {
-    max-width: 400px;
-    height: 80vh;
+  .about__photo {
+    height: auto;
+  }
+
+  .about__description {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 0 4rem;
+  }
+
+  .about__description-title {
+    font-size: 2rem;
+    font-family: "Baskervville SC", serif;
+    font-weight: 400;
+    font-style: normal;
   }
 }

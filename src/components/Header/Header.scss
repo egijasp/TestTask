@@ -4,54 +4,72 @@
   text-align: right;
 }
 
-.hamburger {
+.header__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__nav-toggle {
+  cursor: pointer;
+  border: 0;
+  width: 3rem;
+  height: 3rem;
+  padding: 0em;
+  border-radius: 50%;
+  background: #072a2d;
+  color: white;
+
+  &:focus,
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.header__hamburger-menu {
   width: 50%;
-  position: relative;
+
+  &,
+  &::before,
+  &::after {
+    display: block;
+    margin: 0 auto;
+    height: 3px;
+    background: white;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    width: 100%;
+  }
+
+  &::before {
+    transform: translateY(-6px);
+  }
+
+  &::after {
+    transform: translateY(3px);
+  }
 }
 
-.hamburger,
-.hamburger::before,
-.hamburger::after {
-  display: block;
-  margin: 0 auto;
-  height: 3px;
-  background: white;
-}
-
-.hamburger::before,
-.hamburger::after {
-  content: "";
+.header__nav {
   width: 100%;
+  display: none;
+  font-weight: bold;
+
+  &--visible {
+    display: block;
+    height: auto;
+  }
 }
 
-.hamburger::before {
-  transform: translateY(-6px);
-}
-
-.hamburger::after {
-  transform: translateY(3px);
-}
-
-.nav {
-  width: 100%;
-  visibility: hidden;
-  height: 0;
-  position: absolute;
-}
-
-.nav--visible {
-  visibility: visible;
-  height: auto;
-  position: relative;
-}
-
-.nav_list {
+.header__nav-list {
   list-style: none;
   text-align: center;
   line-height: 1.6;
 }
 
-.nav_link {
+.header__nav-link {
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
@@ -62,50 +80,27 @@
   }
 }
 
-.nav-toggle {
-  cursor: pointer;
-  border: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0em;
-  border-radius: 50%;
-  background: #072a2d;
-  color: white;
-  transition: opacity 250ms ease;
-  position: absolute;
-  left: 0;
-}
-
-.nav-toggle:focus,
-.nav-toggle:hover {
-  opacity: 0.75;
-}
-
 @media (min-width: 700px) {
-  .nav-toggle {
+  .header__nav-toggle {
     display: none;
   }
 
-  .nav {
-    visibility: visible;
+  .header__nav {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    height: auto;
-    position: relative;
-    font-weight: bold;
   }
 
-  .nav_list {
+  .header__nav-list {
     display: flex;
     margin: 0;
   }
 
-  .nav_item {
+  .header__nav-item {
     margin: 0 0 0 1.5em;
   }
 
-  .row {
+  .header__row {
     display: flex;
     justify-content: space-between;
   }

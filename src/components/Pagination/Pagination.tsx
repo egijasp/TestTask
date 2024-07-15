@@ -28,7 +28,7 @@ const Pagination: FC<PaginationProps> = ({
 
   return (
     <div className="pagination">
-      <div className="pagination_select">
+      <div className="pagination__select">
         <span>Items per page</span>
         <select
           value={itemsPerPage}
@@ -45,7 +45,7 @@ const Pagination: FC<PaginationProps> = ({
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="pagination_button"
+          className="pagination__btn"
         >
           <i className="material-symbols-outlined small">
             keyboard_double_arrow_left
@@ -55,8 +55,8 @@ const Pagination: FC<PaginationProps> = ({
           <button
             key={index + 1}
             onClick={() => handlePageChange(index + 1)}
-            className={`pagination_button ${
-              currentPage === index + 1 ? "active" : ""
+            className={`pagination__btn ${
+              currentPage === index + 1 ? "pagination__btn--active" : ""
             }`}
           >
             {index + 1}
@@ -65,7 +65,7 @@ const Pagination: FC<PaginationProps> = ({
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="pagination_button"
+          className="pagination__btn"
         >
           <i className="material-symbols-outlined small">
             keyboard_double_arrow_right

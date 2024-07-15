@@ -1,0 +1,32 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  display: block;
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+
+  tr:hover {
+    background-color: #f4fafa;
+  }
+}
+
+.table__cell--id,
+th:first-child {
+  width: 50px;
+}
+
+th:last-child,
+.table__cell--actions {
+  width: 65px;
+}
+
+@media (min-width: 700px) {
+  .table {
+    display: table;
+  }
+}
